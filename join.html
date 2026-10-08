@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Join a Total Recall circle</title>
+<meta name="description" content="You've been invited to memorise Scripture together on Total Recall.">
+<style>
+  :root { --bg:#2D0547; --card:#4A1767; --ink:#fff; --gold:#F3D9A0; --muted:#E8D6F5; }
+  body { background:linear-gradient(180deg,#4A1767,#2D0547); color:var(--ink); font:17px/1.6 Georgia, serif; margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px 16px; box-sizing:border-box; }
+  main { max-width:440px; width:100%; text-align:center; }
+  h1 { font-size:28px; margin:0 0 8px; letter-spacing:1px; }
+  p { color:var(--muted); }
+  .code { font:600 40px/1 ui-monospace, Menlo, monospace; letter-spacing:10px; color:var(--gold); background:var(--card); border-radius:14px; padding:18px 8px; margin:20px 0; }
+  a.btn { display:block; background:var(--gold); color:#1C1033; text-decoration:none; font:700 18px system-ui, sans-serif; padding:15px; border-radius:14px; margin:12px 0; }
+  small { color:var(--muted); }
+</style>
+</head>
+<body><main>
+<h1>Join my circle</h1>
+<p>You've been invited to memorise Scripture together on <b>Total Recall</b>: one shared verse, and gentle accountability.</p>
+<div class="code" id="code">······</div>
+<a class="btn" id="open" href="totalrecall://join">Open in Total Recall</a>
+<p><small>No app yet? Install Total Recall, then open <b>Circles → Join with a code</b> and enter the code above.</small></p>
+<p><small><a href="./" style="color:var(--gold)">About Total Recall</a> · <a href="privacy.html" style="color:var(--gold)">Privacy</a></small></p>
+</main>
+<script>
+  const code = (new URLSearchParams(location.search).get('code') || '').toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 6);
+  if (code) {
+    document.getElementById('code').textContent = code;
+    document.getElementById('open').href = 'totalrecall://join?code=' + code;
+  }
+</script>
+</body></html>
